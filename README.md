@@ -1,18 +1,52 @@
 # PhpSpider
 
-~ I needed a really basic spider to crawl a site to warm the cache; this is the result.
+---
 
-## Simple usage
+> I needed a really basic spider to crawl a site to warm the cache; this is the result.
+
+
+## Examples
+
+### Simple 
+
+The simplest way to use PhpSpider is to construct an instance and pass the root
+url of the site that you wish to crawl to the `Spider::crawl` method.
+
+By design, PhpSpider will only crawl pages that 
+
+- Return a `content-type` header of `text\html`
+- That are on the same domain as the supplied root 
 
 ```php
-$spider = new \PhpSpider\Spider\Spider();
+use PhpSpider\Spider\Spider;
+
+$spider = new Spider();
 $spider->crawl('https://www.example.com');
 ```
 
-## Add An Event Listener
+### Advanced
+
+If you need to override how PhpSpider works you can add event listeners to be
+notified, that can then affect how PhpSpider operates.
+
+There are 5 events triggered by PhpSpider 
+
+__Spider::SPIDER_CRAWL_PRE__ - Triggered before PhpSpider starts to crawl a site.
+__Spider::SPIDER_CRAWL_POST__ - Triggered one PhpSpider has finished it's crawl.
+__Spider::SPIDER_CRAWL_PAGE_PRE__ - Triggered just before a page is crawled
+__Spider::SPIDER_CRAWL_PAGE_POST__ - Triggered once a page is crawled
+__Spider::SPIDER_CRAWL_PAGE_ERROR__ - Trigged if an error occurs whilst crawling a page
+
+
+You can find examples in the examples directory included in this repository.
+
+```bash
+    $ php ./examples/example_0.php
+```
+
 
 ```php
-use new \PhpSpider\Spider\Spider;
+use PhpSpider\Spider\Spider;
 use Zend\EventManager\Event;
 
 $listener function ($event) {

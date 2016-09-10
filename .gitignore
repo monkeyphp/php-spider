@@ -1,0 +1,7 @@
+/nbproject/private/
+/tests/log
+/vendor/
+/nbproject/
+composer.phar
+composer.lock
+/build/tests/
