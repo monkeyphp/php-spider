@@ -31,11 +31,11 @@ notified, that can then affect how PhpSpider operates.
 
 There are 5 events triggered by PhpSpider 
 
-__Spider::SPIDER_CRAWL_PRE__ - Triggered before PhpSpider starts to crawl a site.
-__Spider::SPIDER_CRAWL_POST__ - Triggered one PhpSpider has finished it's crawl.
-__Spider::SPIDER_CRAWL_PAGE_PRE__ - Triggered just before a page is crawled
-__Spider::SPIDER_CRAWL_PAGE_POST__ - Triggered once a page is crawled
-__Spider::SPIDER_CRAWL_PAGE_ERROR__ - Trigged if an error occurs whilst crawling a page
+- **Spider::SPIDER_CRAWL_PRE** - Triggered before PhpSpider starts to crawl a site.
+- **Spider::SPIDER_CRAWL_POST** - Triggered one PhpSpider has finished it's crawl.
+- **Spider::SPIDER_CRAWL_PAGE_PRE** - Triggered just before a page is crawled
+- **Spider::SPIDER_CRAWL_PAGE_POST** - Triggered once a page is crawled
+- **Spider::SPIDER_CRAWL_PAGE_ERROR** - Trigged if an error occurs whilst crawling a page
 
 
 You can find examples in the examples directory included in this repository.
