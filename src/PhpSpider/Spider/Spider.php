@@ -475,6 +475,7 @@ final class Spider implements EventManagerAwareInterface
                 Spider::SPIDER_CRAWL_PAGE_POST,
                 $this,
                 [
+                    'uri' => $uri,
                     'results' => $results,
                 ],
                 function ($v) {
