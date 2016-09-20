@@ -62,14 +62,28 @@ final class Spider implements EventManagerAwareInterface
      */
     protected $root;
 
-    protected $clientOptions ;
+    /**
+     * Options to use when creating an instance
+     * of the client.
+     * @var array|null
+     */
+    protected $clientOptions;
 
+    /**
+     * Default options used when creating an instance
+     * of the client.
+     * @var array|null
+     */
     protected $defaultOptions = [
         'useragent'    => 'PhpSpider',
         'timeout'      => 30,
         'maxredirects' => 1,
     ];
 
+    /**
+     * Construct an instance of PhpSpider\Spider with the passed in options.
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         $this->clientOptions = array_merge($this->defaultOptions, $options);
