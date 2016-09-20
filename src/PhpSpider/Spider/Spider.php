@@ -62,6 +62,19 @@ final class Spider implements EventManagerAwareInterface
      */
     protected $root;
 
+    protected $clientOptions ;
+
+    protected $defaultOptions = [
+        'useragent'    => 'PhpSpider',
+        'timeout'      => 30,
+        'maxredirects' => 1,
+    ];
+
+    public function __construct(array $options = [])
+    {
+        $this->clientOptions = array_merge($this->defaultOptions, $options);
+    }
+
     /**
      * Return the Client instance
      *
@@ -71,11 +84,7 @@ final class Spider implements EventManagerAwareInterface
     {
         if (! isset($this->client)) {
             $client = new Client();
-            $client->setOptions([
-                'useragent'    => 'PhpSpider',
-                'timeout'      => 30,
-                'maxredirects' => 1,
-            ]);
+            $client->setOptions($this->clientOptions);
             $this->setClient($client);
         }
         return $this->client;
@@ -170,7 +179,6 @@ final class Spider implements EventManagerAwareInterface
             } else {
                 $http = $http->normalize();
             }
-
         } else {
             $http = null;
         }
