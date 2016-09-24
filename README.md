@@ -1,6 +1,9 @@
 # PhpSpider
 
----
+[![Latest Stable Version](https://poser.pugx.org/monkeyphp/php-spider/v/stable.png)](https://packagist.org/packages/monkeyphp/php-spider) 
+[![Total Downloads](https://poser.pugx.org/monkeyphp/php-spider/downloads.png)](https://packagist.org/packages/monkeyphp/php-spider) 
+[![Latest Unstable Version](https://poser.pugx.org/monkeyphp/php-spider/v/unstable.png)](https://packagist.org/packages/monkeyphp/php-spider) 
+[![License](https://poser.pugx.org/monkeyphp/php-spider/license.png)](https://packagist.org/packages/monkeyphp/php-spider)
 
 > I needed a really basic spider to crawl a site to warm the cache; this is the result.
 
