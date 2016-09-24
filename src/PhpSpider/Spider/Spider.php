@@ -63,6 +63,33 @@ final class Spider implements EventManagerAwareInterface
     protected $root;
 
     /**
+     * Options to use when creating an instance
+     * of the client.
+     * @var array|null
+     */
+    protected $clientOptions;
+
+    /**
+     * Default options used when creating an instance
+     * of the client.
+     * @var array|null
+     */
+    protected $defaultOptions = [
+        'useragent'    => 'PhpSpider',
+        'timeout'      => 30,
+        'maxredirects' => 1,
+    ];
+
+    /**
+     * Construct an instance of PhpSpider\Spider with the passed in options.
+     * @param array $options
+     */
+    public function __construct(array $options = [])
+    {
+        $this->clientOptions = array_merge($this->defaultOptions, $options);
+    }
+
+    /**
      * Return the Client instance
      *
      * @return Client
@@ -71,11 +98,7 @@ final class Spider implements EventManagerAwareInterface
     {
         if (! isset($this->client)) {
             $client = new Client();
-            $client->setOptions([
-                'useragent'    => 'PhpSpider',
-                'timeout'      => 30,
-                'maxredirects' => 1,
-            ]);
+            $client->setOptions($this->clientOptions);
             $this->setClient($client);
         }
         return $this->client;
@@ -170,7 +193,6 @@ final class Spider implements EventManagerAwareInterface
             } else {
                 $http = $http->normalize();
             }
-
         } else {
             $http = null;
         }
@@ -453,6 +475,7 @@ final class Spider implements EventManagerAwareInterface
                 Spider::SPIDER_CRAWL_PAGE_POST,
                 $this,
                 [
+                    'uri' => $uri,
                     'results' => $results,
                 ],
                 function ($v) {
