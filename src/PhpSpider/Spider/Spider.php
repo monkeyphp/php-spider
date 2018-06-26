@@ -136,11 +136,12 @@ final class Spider implements EventManagerAwareInterface
      */
     protected function setRoot($root = null)
     {
-        if ($root) {
-            if (is_string($root) && ! (substr($root, -1) === '/')) {
-                $root .= '/';
-            }
-        }
+        // removed 26-June-2018 some domains return 404 if we add '/'
+        // if ($root) {
+        //     if (is_string($root) && ! (substr($root, -1) === '/')) {
+        //         $root .= '/';
+        //     }
+        // }
         $this->root = $this->filterUri($root);
         return $this;
     }
@@ -210,7 +211,7 @@ final class Spider implements EventManagerAwareInterface
     protected function filterResponse(Response $response)
     {
         $headers = $response->getHeaders();
-        $contentType = $headers->get('ContentType');
+        $contentType = $headers->get('Content-Type');
 
         if ($contentType instanceof ContentType) {
             $mediaType = $contentType->getMediaType();
